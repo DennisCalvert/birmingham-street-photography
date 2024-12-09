@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #000000;
+}
+h1 {
+  color: #989898;
+  font-size: 1em;
+  font-weight: normal;
+  text-align: center;
+}
+p {
+  color: #717171;
+  padding: 5px 10px;
+}
+#paypal-button-container {
+  padding: 10px;
+}

@@ -36,6 +36,7 @@
         border-bottom: 1px solid #e7e7e7;
         /* max-width: 1200px; */
         margin: 0 auto;
+        background: #fff;
       }
 
       @media (max-width: 1240px) {
@@ -46,8 +47,9 @@
       @media (max-width: 768px) {
         header {
           position: fixed;
-          background: #222;
+          /* background: #222; */
           width: 100%;
+          font-size: 1em;
           z-index: 999;
         }
 
@@ -58,11 +60,18 @@
 
       h1 {
         margin: 0;
-        font-size: 2.5em;
+        font-size: 1em;
         font-family: "Shrikhand", serif;
         /* color: #fff; */
       }
-
+      @media (min0-width: 769) {
+        h1 {
+          /* margin: 0; */
+          font-size: 2.5em;
+          /* font-family: "Shrikhand", serif; */
+          /* color: #fff; */
+        }
+      }
       nav {
         position: relative;
       }
@@ -515,6 +524,8 @@
         width: 25%;
       }
     </style>
+    <link href="css/default.css" rel="stylesheet" />
+    <link href="css/swipe.css" rel="stylesheet" />
   </head>
   <body>
     <header>
@@ -544,6 +555,10 @@
         <p>Welcome to my portfolio website.</p>
       </section> -->
       <section id="gallery" class="gallery">
+        <div class="swipe-global">
+          <div class="swipe-wrapper" id="swiper"></div>
+        </div>
+
         <!-- <h2>Gallery</h2> -->
         <!-- <h3>Long exposure photographs</h3> -->
         <div class="grid" id="headshots">
@@ -811,4 +826,5 @@
 
     gtag("config", "G-L1E4CWJZRE");
   </script>
+  <script src="js/swipe.js"></script>
 </html>
