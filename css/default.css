@@ -134,6 +134,7 @@ p {
   overflow: hidden;
   position: relative;
   cursor: pointer;
+  flex: 1 1 33%;
 }
 
 .grid-item img {

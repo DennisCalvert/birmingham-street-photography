@@ -96,19 +96,60 @@ document
       });
   });
 
-var images = document.querySelectorAll(".grid-item");
+fetch(
+  "https://base-api-ts.herokuapp.com/publicGallery/denniscalvert/birmingham-street-photography"
+).then((res) => {
+  res.json().then((data) => {
+    // console.log(data.gallery.images);
+    // return;
+    //   <div class="grid-item" style="flex: 1 1 299.5px">
+    //   <img
+    //     src="https://magiccityfilmmakers.s3.us-east-2.amazonaws.com/galleries/67550fea49ee574c80dfcae0/images/l/6755103749ee574c80dfcaf2.jpeg"
+    //     alt="Dennis Calvert Photography"
+    //   />
+    // </div>
+    var galleryFragment = document.createDocumentFragment();
+    data.gallery.images.forEach((item) => {
+      console.log(item);
+      var gridItem = document.createElement("div");
+      gridItem.classList.add("grid-item");
+      var gridItemImg = document.createElement("img");
+      gridItemImg.src =
+        "https://magiccityfilmmakers.s3.us-east-2.amazonaws.com/" + item.url.s;
+      gridItemImg.alt = "Gallery Storm";
 
-images.forEach((item) => {
-  item.addEventListener("click", function () {
-    item.children[0].src = item.children[0].src.replace("images/s", "images/l");
+      gridItem.appendChild(gridItemImg);
 
-    if (!item.classList.contains("enlarged")) {
-      item.classList.add("enlarged");
-    } else {
-      item.classList.remove("enlarged");
-    }
+      gridItem.addEventListener("click", function () {
+        gridItemImg.src =
+          "https://magiccityfilmmakers.s3.us-east-2.amazonaws.com/" +
+          item.url.l;
+
+        if (!gridItem.classList.contains("enlarged")) {
+          gridItem.classList.add("enlarged");
+        } else {
+          gridItem.classList.remove("enlarged");
+        }
+      });
+      galleryFragment.appendChild(gridItem);
+    });
+
+    document.getElementById("gallery-container").appendChild(galleryFragment);
   });
 });
+// var images = document.querySelectorAll(".grid-item");
+
+// images.forEach((item) => {
+//   item.addEventListener("click", function () {
+//     item.children[0].src = item.children[0].src.replace("images/s", "images/l");
+
+//     if (!item.classList.contains("enlarged")) {
+//       item.classList.add("enlarged");
+//     } else {
+//       item.classList.remove("enlarged");
+//     }
+//   });
+// });
 
 var largeUrls = Array.from(document.getElementsByTagName("img"))
   .filter(function (img) {
